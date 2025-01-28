@@ -74,7 +74,6 @@ class APIClient {
    * Posts the given data to the URL
    */
   create = (url: string, data: any): Promise<AxiosResponse> => {
-    debugger;
     return axios.post(url, data);
   };
 

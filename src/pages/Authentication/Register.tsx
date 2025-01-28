@@ -71,7 +71,6 @@ const Register = () => {
         }
 
         setTimeout(() => {
-            debugger;
             dispatch(resetRegisterFlag());
         }, 3000);
 

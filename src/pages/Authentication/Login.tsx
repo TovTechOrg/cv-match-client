@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import withRouter from "../../Components/Common/withRouter";
 // Formik validation
 import * as Yup from "yup";
-import { useFormik } from "formik";
+import { Field, useFormik } from "formik";
 
 // actions
 import { loginUser, socialLogin, resetLoginFlag } from "../../slices/thunks";
@@ -40,12 +40,12 @@ const Login = (props: any) => {
     const [loader, setLoader] = useState<boolean>(false);
 
     useEffect(() => {
-        if (user && user) {
+        if (user) {
             const updatedUserData = process.env.REACT_APP_DEFAULTAUTH === "firebase" ? user.multiFactor.user.email : user.email;
             const updatedUserPassword = process.env.REACT_APP_DEFAULTAUTH === "firebase" ? "" : user.confirm_password;
             setUserLogin({
                 email: updatedUserData,
-                password: updatedUserPassword
+                password: updatedUserPassword,
             });
         }
     }, [user]);
@@ -57,6 +57,7 @@ const Login = (props: any) => {
         initialValues: {
             email: userLogin.email || "admin@themesbrand.com" || '',
             password: userLogin.password || "123456" || '',
+            rememberMe: false
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -115,7 +116,7 @@ const Login = (props: any) => {
                                             <h5 className="text-primary">Welcome Back !</h5>
                                             <p className="text-muted">Sign in to continue to Velzon.</p>
                                         </div>
-                                        {error && error ? (<Alert color="danger"> {error} </Alert>) : null}
+                                        {error ? (<Alert color="danger"> {error} </Alert>) : null}
                                         <div className="p-2 mt-4">
                                             <Form
                                                 onSubmit={(e) => {
@@ -170,7 +171,13 @@ const Login = (props: any) => {
                                                 </div>
 
                                                 <div className="form-check">
-                                                    <Input className="form-check-input" type="checkbox" value="" id="auth-remember-check" />
+                                                    {/* <Field onChange={validation.handleChange} className="form-check-input" type="checkbox" id="auth-remember-check" checked={validation.values.authRememberCheck} /> */}
+                                                    <input
+                                                        type="checkbox"
+                                                        name="rememberMe"
+                                                        onChange={validation.handleChange}
+                                                        checked={validation.values.rememberMe}
+                            />                                                    
                                                     <Label className="form-check-label" htmlFor="auth-remember-check">Remember me</Label>
                                                 </div>
 

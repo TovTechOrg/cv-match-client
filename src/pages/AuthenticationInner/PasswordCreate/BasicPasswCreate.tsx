@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Card, CardBody, Col, Container, Row, Form, Input, Label, FormFeedback } from 'reactstrap';
 import ParticlesAuth from '../ParticlesAuth';
 import logoLight from "../../../assets/images/logo-light.png";
@@ -11,7 +11,7 @@ import axios from 'axios';
 
 const BasicPasswCreate = () => {
 
-
+    const navigate = useNavigate();
     const location = useLocation();
     const queryParameters = new URLSearchParams(location.search);
     const token = queryParameters.get("token");
@@ -23,28 +23,14 @@ const BasicPasswCreate = () => {
 
     document.title = "Create New Password | Velzon - React Admin & Dashboard Template";
 
+    // const [newPassword, setNewPassword] = useState('');
     const [passwordShow, setPasswordShow] = useState(false);
     const [confrimPasswordShow, setConfrimPasswordShow] = useState(false);   
-    
-    //
-    const validateToken = async () => {
-        try {
-            const res = await axios.post(`http://localhost:5000/api/reset_with_token/${token}`);
-            if (res.data === "success") {
-                setIsValidToken(true);
-            }
-        }
-        catch (error) {
-            console.log(error);
-            setIsValidToken(false);
-        }
-    }
-
-    useEffect(() => {
-        validateToken();
-    }, []);
-    
     const [isValidToken, setIsValidToken] = useState<boolean>();
+    
+
+
+   
 
 
 
@@ -67,8 +53,20 @@ const BasicPasswCreate = () => {
                 .oneOf([Yup.ref('password'), ""],)
                 .required('Confirm Password is required')
         }),
-        onSubmit: (values) => {
-            // console.log(values);
+        onSubmit: async (values) => {
+            //
+            try {
+                const password = values.password;
+                const res = await axios.post(`http://localhost:5000/api/reset_with_token`, { token, password });
+                if (res.data === "success") {
+                    setIsValidToken(true);
+                    navigate('/login')
+                }
+            }
+            catch (error) {
+                console.log(error);
+                setIsValidToken(false);
+            }
         }
     });
     return (
@@ -87,14 +85,6 @@ const BasicPasswCreate = () => {
                             </div>
                         </Col>
                     </Row>
-
-                    <Row>
-                        <div>
-                            token is valid:  {isValidToken ? "true" : "false"}
-                        </div>                        
-                    </Row>
-
-
                     <Row className="justify-content-center">
                         <Col md={8} lg={6} xl={5}>
                             <Card className="mt-4">

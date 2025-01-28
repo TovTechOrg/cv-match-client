@@ -16,7 +16,8 @@ export const loginUser = (user : any, history : any) => async (dispatch : any) =
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
       response = postJwtLogin({
         email: user.email,
-        password: user.password
+        password: user.password,
+        rememberMe: user.rememberMe
       });
 
     } else if (process.env.REACT_APP_DEFAULTAUTH) {
@@ -47,7 +48,7 @@ export const loginUser = (user : any, history : any) => async (dispatch : any) =
       }
     }
   } catch (error) {
-    dispatch(apiError(error));
+    dispatch(apiError({"error": error}));
   }
 };
 
