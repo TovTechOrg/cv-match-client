@@ -66,8 +66,13 @@ const Register = () => {
 
     useEffect(() => {
         if (success) {
-            debugger;
             setTimeout(() => history("/login"), 3000);
+        }
+
+        if (error) {
+            setTimeout(() => {
+                setLoader(false);
+            }, 3000);
         }
 
         setTimeout(() => {
@@ -212,7 +217,7 @@ const Register = () => {
                                                 </div>
 
                                                 <div className="mt-4">
-                                                    <Button color="success" className="w-100" type="submit" disabled={loader && true}>
+                                                    <Button color="success" className="w-100" type="submit" disabled={loader}>
                                                         {loader && <Spinner size="sm" className='me-2'> Loading... </Spinner>}
                                                         Sign Up
                                                     </Button>

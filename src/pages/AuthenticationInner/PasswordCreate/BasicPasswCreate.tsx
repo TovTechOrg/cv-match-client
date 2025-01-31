@@ -150,10 +150,10 @@ const BasicPasswCreate = () => {
                                                 <p id="pass-number" className="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
                                             </div>
 
-                                            <div className="form-check">
+                                            {/* <div className="form-check">
                                                 <Input className="form-check-input" type="checkbox" value="" id="auth-remember-check" />
                                                 <Label className="form-check-label" htmlFor="auth-remember-check">Remember me</Label>
-                                            </div>
+                                            </div> */}
 
                                             <div className="mt-4">
                                                 <Button color="success" className="w-100" type="submit">Reset Password</Button>

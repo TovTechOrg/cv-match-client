@@ -24,7 +24,7 @@ const registerSlice = createSlice({
     registerUserFailed(state : any, action : any) {
       state.user = null;
       state.loading = false;
-      state.registrationError = action.payload;
+      state.registrationError = action.payload.message;
       state.error = true;
     },
     resetRegisterFlagChange(state : any) {

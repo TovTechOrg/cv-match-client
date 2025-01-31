@@ -175,6 +175,7 @@ const Login = (props: any) => {
                                                     <input
                                                         type="checkbox"
                                                         name="rememberMe"
+                                                        className='form-check-input'
                                                         onChange={validation.handleChange}
                                                         checked={validation.values.rememberMe}
                             />                                                    
