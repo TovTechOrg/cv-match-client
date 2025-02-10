@@ -16,22 +16,24 @@ const ProfileDropdown = () => {
     // Inside your component
     const user = useSelector(profiledropdownData);
 
-    const [userName, setUserName] = useState("Admin");
+    const [userName, setUserName] = useState(sessionStorage.getItem("authUser") ? JSON.parse(sessionStorage.getItem("authUser") || "")?.user?.name : "");
 
     useEffect(() => {
         const authUser = sessionStorage.getItem("authUser");
+        const username = JSON.parse(authUser!).user.name;
         if (authUser) {
             const obj = JSON.parse(authUser);
-            setUserName(
-                process.env.REACT_APP_DEFAULTAUTH === "fake"
-                    ? obj.username === undefined
-                        ? user.first_name || obj.data.first_name
-                        : "Admin"
-                    : process.env.REACT_APP_DEFAULTAUTH === "firebase"
-                        ? obj.email || "Admin"
-                        : "Admin"
-            );
+            // setUserName(
+            //     process.env.REACT_APP_DEFAULTAUTH === "fake"
+            //         ? obj.username === undefined
+            //             ? user.first_name || obj.data.first_name
+            //             : "Admin"
+            //         : process.env.REACT_APP_DEFAULTAUTH === "jwt"
+            //             ? obj.name || "Admin"
+            //             : "Admin"
+            // );
         }
+        setUserName(username);
     }, [userName, user]);
 
     //Dropdown Toggle

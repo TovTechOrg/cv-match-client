@@ -150,8 +150,12 @@ import CoverSignUp from "../pages/AuthenticationInner/Register/CoverSignUp";
 import BasicPasswReset from '../pages/AuthenticationInner/PasswordReset/BasicPasswReset';
 //pages
 import Starter from '../pages/Pages/Starter/Starter';
-import SimplePage from '../pages/Pages/Profile/SimplePage/SimplePage';
-import Settings from '../pages/Pages/Profile/Settings/Settings';
+// import SimplePage from '../pages/Pages/Profile/SimplePage/SimplePage';
+// import Settings from '../pages/Pages/Profile/Settings/Settings';
+
+
+
+
 import Team from '../pages/Pages/Team/Team';
 import Timeline from '../pages/Pages/Timeline/Timeline';
 import Faqs from '../pages/Pages/Faqs/Faqs';
@@ -228,7 +232,7 @@ import NFTLanding from "../pages/Landing/NFTLanding";
 import JobLanding from '../pages/Landing/Job'
 
 // User Profile
-import UserProfile from "../pages/Authentication/user-profile";
+// import UserProfile from "../pages/Authentication/user-profile";
 
 import FileManager from "../pages/FileManager";
 import ToDoList from "../pages/ToDo";
@@ -242,12 +246,20 @@ import DashboardBlog from "pages/DashboardBlog";
 import BlogListView from "pages/Pages/Blogs/ListView";
 import BlogGridView from "pages/Pages/Blogs/GridView";
 import PageBlogOverview from "pages/Pages/Blogs/Overview";
+import { MatchesPage } from "pages/Profile/MatchesPage";
 
 
 const authProtectedRoutes = [
+
+  // our pages
+  { path: "/matches", component: <MatchesPage /> },
+
+
+
+
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   { path: "/dashboard-crm", component: <DashboardCrm /> },
-  { path: "/dashboard", component: <DashboardEcommerce /> },
+  // { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
   { path: "/dashboard-crypto", component: <DashboardCrypto /> },
   { path: "/dashboard-projects", component: <DashboardProject /> },
@@ -418,8 +430,8 @@ const authProtectedRoutes = [
 
   //Pages
   { path: "/pages-starter", component: <Starter /> },
-  { path: "/pages-profile", component: <SimplePage /> },
-  { path: "/pages-profile-settings", component: <Settings /> },
+  // { path: "/pages-profile", component: <SimplePage /> },
+  // { path: "/pages-profile-settings", component: <Settings /> },
   { path: "/pages-team", component: <Team /> },
   { path: "/pages-timeline", component: <Timeline /> },
   { path: "/pages-faqs", component: <Faqs /> },
@@ -434,16 +446,16 @@ const authProtectedRoutes = [
   { path: "/pages-blog-overview", component: <PageBlogOverview /> },
 
   //User Profile
-  { path: "/profile", component: <UserProfile /> },
+  // { path: "/profile", component: <UserProfile /> },
 
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
   {
-    path: "/",
-    exact: true,
-    component: <Navigate to="/dashboard" />,
+    // path: "/",
+    // exact: true,
+    // component: <Navigate to="/dashboard" />,
   },
-  { path: "*", component: <Navigate to="/dashboard" /> },
+  // { path: "*", component: <Navigate to="/dashboard" /> },
   //Job pages
   { path: "/apps-job-statistics", component: <Statistics /> },
   { path: "/apps-job-lists", component: <JobList /> },
