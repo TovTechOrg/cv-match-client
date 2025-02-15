@@ -1,10 +1,13 @@
 import axios from 'axios';
+import { DeleteMatchModal } from 'Components/Common/DeleteMatchModal';
+import { ReportModal } from 'Components/Common/ReportModal';
 import { create } from 'domain';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Col, Container, Row, Table } from 'reactstrap';
 import { text } from 'stream/consumers';
 import { number } from 'yup';
 
+// interfaces:
 interface IMatch {
       idx: number,
       id: string;
@@ -50,7 +53,7 @@ export const MatchesPage = () => {
 
 
 
-
+// functions:
   const monthsStrings = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -102,16 +105,10 @@ export const MatchesPage = () => {
     return formattedDateString;
   }
 
-
-
-
-
-
+  // hooks:
   const [matches, setMatches] = useState<IMatch>();
   const [reports, setReports] = useState<IReport>();
   const [pageObject, setPageObject] = useState<IPageObject[]>([]);
-  //
-  //const [textBoxesCount, setTextBoxesCount] = useState(0);
   const [textBoxesValues, setTextBoxesValue] = useState<IInput[]>([]);
   const [commentsBoxesValues, setTextCommentsValue] = useState<IInput[]>([]);
 
@@ -176,7 +173,6 @@ export const MatchesPage = () => {
 
 
 
-  // TODO: handle change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, idx: number, type: string) => {
     switch(type) {
       case 'text':
@@ -191,8 +187,74 @@ export const MatchesPage = () => {
 
   }
 
+  const download_s3_report = async (id: string) => {
+    const url = 'http://localhost:5000/api/s3_get_report?id=' + id;
+      try {
+          const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  // Add any required auth headers here
+              }
+          });
+      
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
 
+          // Get the blob from response
+          const blob = await response.blob();
+      
+          // Create download link
+          const downloadUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = 'report.docx'; // Set desired filename
+      
+          // Trigger download
+          document.body.appendChild(link);
+          link.click();
+      
+          // Cleanup
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(downloadUrl);
 
+      } catch (error) {
+          console.error('Error downloading report:', error);
+      }
+  };
+
+  const download_s3 = async (id: string) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/s3_get_cv`, {
+        params: { id },
+        responseType: 'blob'
+      });
+
+      const blob = new Blob([response as any]); // new Blob([response.data]);
+      const extension = '.docx'; // response.headers['content-type'] === 'application/pdf' ? '.pdf' : '.docx';
+      const fileName = `cv${extension}`;
+    
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = fileName;
+    
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(downloadUrl);
+
+    } catch (error) {
+      alert("CV file not found in database!");
+    }
+  };
+
+  const deleteMatchConfirmHandler = async (id: string) => {
+    const response = await axios.post('http://localhost:5000/api/delete_match', {
+      id,
+    });
+  }
 
 
 
@@ -257,7 +319,12 @@ export const MatchesPage = () => {
                       <td>{item2.score}</td> 
                       <td><input type="text" name={`input-user-score-${idx1}-${idx2}`} id={item2.idx.toString()} value={textBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.idx,"text")}/></td>
                       <td><input type="text" name={`input-comments-${idx1}-${idx2}`} id={item2.idx.toString()} value={commentsBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.idx,"comments")}/></td>
-                      <td>ACTIONS</td>
+                        <td>
+                          <ReportModal showModal={false} reportText={item2.candidate_report}/>|
+                          <button onClick={() => download_s3_report(item2.id)}>Download report</button>|
+                          <button onClick={() => download_s3(item2.id)}>Download CV</button>|
+                          <DeleteMatchModal showModal={false} bodyText={"this is my question..."} matchId={item2.id} confirmHandler={deleteMatchConfirmHandler}/>
+                        </td>
                     </tr>
                   ))}
                 </tbody>
