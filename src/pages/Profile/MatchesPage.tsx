@@ -197,6 +197,15 @@ export const MatchesPage = () => {
         case 'text':
           textBoxesValues[idx].value = e.target.value;
           setTextBoxesValue([...textBoxesValues, textBoxesValues[idx]]);
+
+          timeoutPointer = setTimeout(() => {          
+            // save comment to db
+            axios.put('http://localhost:5000/api/update_score', {
+              "id": id,
+              "score": e.target.value,
+            })
+          }, 5000)
+
           break;
         case 'comments':
           commentsBoxesValues[idx].value = e.target.value;
