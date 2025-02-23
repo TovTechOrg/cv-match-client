@@ -4,12 +4,18 @@ import Modal from 'react-bootstrap/Modal';
 
 interface IProps {
     showModal: boolean;
+    initSVG: React.ReactNode;
+    title: string;
     bodyText: string;
     matchId: string;
-    confirmHandler: (response: string) => void;
+    idx1: number;
+    idx2: number;
+    approveAnswerTitle: string;
+    declineAnswerTitle: string;
+    confirmHandler: (response: string, idx1: number, idx2: number) => void;
 }
 
-export const DeleteMatchModal = ({ showModal, bodyText, matchId, confirmHandler }: IProps) => {
+export const ConfirmModal = ({ showModal, initSVG, title, bodyText, matchId, idx1, idx2, approveAnswerTitle, declineAnswerTitle, confirmHandler }: IProps) => {
     const [show, setShow] = useState(showModal);
 
     const handleClose = (response: boolean) => {
@@ -18,14 +24,14 @@ export const DeleteMatchModal = ({ showModal, bodyText, matchId, confirmHandler 
 
       // execute confirmHandler
       if (response)
-        confirmHandler(matchId);
+        confirmHandler(matchId, idx1, idx2);
     }
     const handleShow = () => setShow(true);
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-          Delete
+        <Button variant="primary" onClick={handleShow} title={title}>
+          {initSVG}
         </Button>
   
         <Modal show={show} onHide={()=>handleClose(false)} size='sm'>
@@ -37,10 +43,10 @@ export const DeleteMatchModal = ({ showModal, bodyText, matchId, confirmHandler 
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => handleClose(true)}>
-              Yes, delete it
+              {approveAnswerTitle}
             </Button>
             <Button variant="primary" onClick={() => handleClose(false)}>
-              No, keep it
+              {declineAnswerTitle}
             </Button>
           </Modal.Footer>
         </Modal>

@@ -1,13 +1,20 @@
+import { init } from 'i18next';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import {showReportModalSVG } from 'Components/SVG/index';
+
 
 interface IProps {
     showModal: boolean;
-    reportText: string;
+    initSVG: React.ReactNode;
+    isConfirm: boolean;
+    bodyText: string;
+    title: string;
 }
 
-export const ReportModal = ({ showModal, reportText }: IProps) => {
+
+export const ReportModal = ({ showModal, initSVG, isConfirm, bodyText, title }: IProps) => {
     const [show, setShow] = useState(showModal);
 
     const handleClose = () => setShow(false);
@@ -15,21 +22,18 @@ export const ReportModal = ({ showModal, reportText }: IProps) => {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-          Show report Modal
+        <Button variant="primary" onClick={handleShow} title={title}>
+          {initSVG}
         </Button>
   
         <Modal show={show} onHide={handleClose} size='xl'>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body dangerouslySetInnerHTML={{ __html: reportText }}></Modal.Body>
+          <Modal.Body dangerouslySetInnerHTML={{ __html: bodyText }}></Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
             <Button variant="primary" onClick={handleClose}>
-              Save Changes
+              Close
             </Button>
           </Modal.Footer>
         </Modal>
