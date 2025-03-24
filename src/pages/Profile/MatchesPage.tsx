@@ -37,6 +37,7 @@ interface IReport {
 
 interface IPageObject {
   type: string,
+  id: string,
   title: string,
   created_at: string,
   job_desc: string,
@@ -98,12 +99,6 @@ export const MatchesPage = () => {
     return result;
   }
 
-  // const removeItemFromContent = (idx1: number, idx2: number) => {
-  //   let newContent = pageObject[idx1].content.filter((item, idx) => idx !== idx2);
-  //   pageObject[idx1].content = newContent;
-  //   setPageObject([...pageObject]);
-  // }
-
   const createAtToString = (num: number) => {
     const formattedDate = new Date(num) as Date;
     const m = monthsStrings[formattedDate.getMonth() + 1];
@@ -121,7 +116,8 @@ export const MatchesPage = () => {
   const [textBoxesValues, setTextBoxesValue] = useState<IInput[]>([]);
   const [commentsBoxesValues, setTextCommentsValue] = useState<IInput[]>([]);
   const [showSpinner, setShowSpinner] = useState(false);
-  let timeoutPointer: NodeJS.Timeout;
+  let scoreTimeoutPointer: NodeJS.Timeout;
+  let commentTimeoutPointer: NodeJS.Timeout;
 
   let initCandidatePos = 0;
 
@@ -132,6 +128,7 @@ export const MatchesPage = () => {
     objToArr(reports!.job_title).map((item, idx) => {
       let header = { 
         type: 'header', 
+        id: objToArr(reports!.id)[idx] as string,
         title: `${item} - job ${objToArr(reports!.id)[idx]}`,
         created_at: objToArr(reports!.created_at)[idx] as string,
         job_desc: objToArr(reports!.job_desc)[idx] as string,
@@ -191,28 +188,29 @@ export const MatchesPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, id: string, idx: number, type: string) => {
 
-    clearTimeout(timeoutPointer);
-
-      switch(type) {
-        case 'text':
+    
+    switch(type) {
+      case 'text':
+          clearTimeout(scoreTimeoutPointer);
           textBoxesValues[idx].value = e.target.value;
           setTextBoxesValue([...textBoxesValues, textBoxesValues[idx]]);
-
-          timeoutPointer = setTimeout(() => {          
+          
+          scoreTimeoutPointer = setTimeout(() => {          
             // save comment to db
             axios.put('http://localhost:5000/api/update_score', {
               "id": id,
               "score": e.target.value,
             })
           }, 5000)
-
-          break;
-        case 'comments':
+          
+        break;
+          case 'comments':
+          clearTimeout(commentTimeoutPointer);
           commentsBoxesValues[idx].value = e.target.value;
           setTextCommentsValue([...commentsBoxesValues, commentsBoxesValues[idx]]);
 
           
-          timeoutPointer = setTimeout(() => {          
+          commentTimeoutPointer = setTimeout(() => {          
             // save comment to db
             axios.put('http://localhost:5000/api/update_comment', {
               "id": id,
@@ -301,7 +299,7 @@ export const MatchesPage = () => {
 
   const deleteJobConfirmHandler = async (id: string, idx1: number) => {
     setShowSpinner(true);
-    const response = await axios.post('http://localhost:5000/api/delete_job', { id });
+    const response = await axios.delete('http://localhost:5000/api/delete_job', { data: { id }});
 
     let newContent = pageObject.filter((item, idx) => idx !== idx1);
     setPageObject([...newContent]);
@@ -371,7 +369,7 @@ export const MatchesPage = () => {
                             initSVG={ deleteSVG() }
                             title='Delete Job'
                             bodyText={"Do you confirm to delete the current job ?"} 
-                            matchId={""} 
+                            matchId={item1.id} 
                             idx1={idx1}
                             idx2={0}
                             approveAnswerTitle='Yes, delete it'

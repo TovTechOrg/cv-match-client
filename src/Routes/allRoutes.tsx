@@ -246,20 +246,14 @@ import DashboardBlog from "pages/DashboardBlog";
 import BlogListView from "pages/Pages/Blogs/ListView";
 import BlogGridView from "pages/Pages/Blogs/GridView";
 import PageBlogOverview from "pages/Pages/Blogs/Overview";
-import { MatchesPage } from "pages/Profile/MatchesPage";
+import MatchesPage from "pages/Profile/MatchesPage";
 
 
 const authProtectedRoutes = [
-
-  // our pages
   { path: "/matches", component: <MatchesPage /> },
-
-
-
-
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   { path: "/dashboard-crm", component: <DashboardCrm /> },
-  // { path: "/dashboard", component: <DashboardEcommerce /> },
+  { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
   { path: "/dashboard-crypto", component: <DashboardCrypto /> },
   { path: "/dashboard-projects", component: <DashboardProject /> },
@@ -451,11 +445,11 @@ const authProtectedRoutes = [
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
   {
-    // path: "/",
-    // exact: true,
-    // component: <Navigate to="/dashboard" />,
+    path: "/",
+    exact: true,
+    component: <Navigate to="/login" />,
   },
-  // { path: "*", component: <Navigate to="/dashboard" /> },
+  { path: "*", component: <Navigate to="/login" /> },
   //Job pages
   { path: "/apps-job-statistics", component: <Statistics /> },
   { path: "/apps-job-lists", component: <JobList /> },
