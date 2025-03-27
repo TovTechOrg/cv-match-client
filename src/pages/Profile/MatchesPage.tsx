@@ -53,7 +53,7 @@ interface IInput {
 
 
 
-export const MatchesPage = () => {
+const MatchesPage = () => {
 
 
 
@@ -64,11 +64,16 @@ export const MatchesPage = () => {
   ];
 
   const getMatches = new Promise((resolve, reject) => {
+
+    //
     const authUserStr = sessionStorage.getItem('authUser');
     const authUserJson = JSON.parse(authUserStr || '{}');
+
+
     axios.post<IMatch>('http://localhost:5000/api/matches', authUserJson, {
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authUserJson.access_token}`
       }}).then(
         (res) => {
           // setMatches(res as any);
@@ -83,6 +88,7 @@ export const MatchesPage = () => {
     axios.post<IReport>('http://localhost:5000/api/reports', authUserJson, {
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authUserJson.access_token}`
       }}).then((res) => {
         // setReports(res as any);
         resolve(res);
@@ -432,3 +438,5 @@ export const MatchesPage = () => {
     </React.Fragment>
   )
 }
+
+export default MatchesPage;

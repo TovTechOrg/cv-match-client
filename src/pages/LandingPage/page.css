@@ -1,0 +1,20 @@
+.bg-gradient-custom {
+    background: linear-gradient(to bottom, white,#0e73b8);
+    min-height: 100vh;
+  }
+h2 {
+  color: #03024e !important;
+  
+}
+
+.button {
+  background-color: #03024e !important;
+}
+.button[type='submit'] {
+  background-color: #5ea3cb !important;
+}
+p{
+  /* color:white; */
+  font-size: x-large;
+  /* font-weight: bold; */
+}
