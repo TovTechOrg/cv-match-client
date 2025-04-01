@@ -33,18 +33,18 @@ const Contact = (props: Props) => {
       </h2>
       <Row>
         <Col lg={4} sm={12}>
-          <div className="text-white fw-bolder">
+          <div className="text-white fw-bolder d-flex flex-column">
             {/* <div className="mt-3 ">
               <h4>Mailing Address:</h4>
               <p>Hata'as 33 Givatayim, Isreal</p>
             </div> */}
             <div className="mt-3">
-              <h4>Email Address:</h4>
+              <h4 style={{color:'white'}}>Email Address:</h4>
               {/* <p>info@pythia-match.com</p> */}
               <p>talya@tovtech.org</p>
             </div>
             <div>
-              <h4>Phone Number:</h4>
+              <h4 style={{color:'white'}}>Phone Number:</h4>
               <p>+972-58-4431931</p>
             </div>
           </div>

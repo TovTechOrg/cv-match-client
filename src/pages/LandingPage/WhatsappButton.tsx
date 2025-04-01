@@ -12,14 +12,14 @@ const WhatsAppButton = () => {
         className="position-absolute w-100 h-100 rounded-pill  rounded-5 d-flex align-items-center gap-4 justify-content-between"
         style={{ background: "linear-gradient(to right, #0097b2, #7ed957)" }}
       >
-        <Col className=" ">
-          <Button
+        <Col className="d-flex justify-content-center " sm={12}>
+          <Button 
             variant="link"
             href="https://wa.me/972584431931?text=I%20want%20to%20try%20PythiaMatch!"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white fw-bold fs-2  text-decoration-underline "
-            style={{marginLeft:'6rem'}}
+            className="text-white position-relative text-center fw-bold fs-2  text-decoration-underline "
+            // style={{marginLeft:'8rem'}}
           >
             Contact us on WhatsApp
           </Button>
