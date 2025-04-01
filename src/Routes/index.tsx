@@ -33,11 +33,18 @@ const Index = () => {
                             path={route.path}
                             element={
                                 <AuthProtected>
-                                    <VerticalLayout>{route.component}</VerticalLayout>
+                                    {
+                                    route.path === "/landing" ? 
+                                        <>{route.component}</> 
+                                        :
+                                        <VerticalLayout>{route.component}</VerticalLayout> 
+                                    }
                                 </AuthProtected>}
                             key={idx}
                         />
                     ))}
+
+                    
                 </Route>
             </Routes>
         </React.Fragment>

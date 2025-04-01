@@ -252,7 +252,6 @@ import LandingPage from "pages/LandingPage/LandingPage";
 
 const authProtectedRoutes = [
   { path: "/matches", component: <MatchesPage /> },
-  { path: "/landing", component: <LandingPage />},
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
   // { path: "/dashboard", component: <DashboardEcommerce /> },
@@ -449,9 +448,9 @@ const authProtectedRoutes = [
   {
     path: "/",
     exact: true,
-    component: <Navigate to="/login" />,
+    component: <Navigate to="/landing" />,
   },
-  { path: "*", component: <Navigate to="/login" /> },
+  { path: "*", component: <Navigate to="/landing" /> },
   //Job pages
   // { path: "/apps-job-statistics", component: <Statistics /> },
   // { path: "/apps-job-lists", component: <JobList /> },
@@ -474,6 +473,9 @@ const publicRoutes = [
   { path: "/login", component: <Login /> },
   { path: "/forgot-password", component: <ForgetPasswordPage /> },
   { path: "/register", component: <Register /> },
+
+  // Landing Page
+  { path: "/landing", component: <LandingPage />},
 
   //AuthenticationInner pages
   { path: "/auth-signin-basic", component: <BasicSignIn /> },

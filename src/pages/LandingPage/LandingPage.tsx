@@ -11,6 +11,8 @@ import "./page.css";
 import PythiaMatchToturialVideo from "../../assets/videos/video.mp4";
 import VideoPlayer from "./VideoPlayer";
 import WhatsAppButton from "./WhatsappButton";
+
+
 function LandingPage() {
   return (
     <>

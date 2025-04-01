@@ -1,3 +1,7 @@
+body {
+  background-color: transparent;
+}
+
 .bg-gradient-custom {
     background: linear-gradient(to bottom, white,#0e73b8);
     min-height: 100vh;
