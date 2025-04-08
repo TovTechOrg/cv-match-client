@@ -317,7 +317,7 @@ const MonthGridCalender = () => {
         }
     };
 
-    document.title = "Month Grid Calendar | Velzon - React Admin & Dashboard Template";
+    document.title = "Month Grid Calendar | PythiaMatch - AI for recruiters";
     return (
         <React.Fragment>
             <DeleteModal

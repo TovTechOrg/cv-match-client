@@ -15,7 +15,7 @@ import {
 } from "./BarCharts";
 
 const BarCharts = () => {
-    document.title="Bar Charts | Velzon - React Admin & Dashboard Template";
+    document.title="Bar Charts | PythiaMatch - AI for recruiters";
     return (
         <React.Fragment>
             <div className="page-content">         

@@ -55,7 +55,7 @@ const TimeTracking = () => {
                                 </tr>
                                 <tr>
                                     <td className="fw-medium">Project Name</td>
-                                    <td>Velzon - Admin Dashboard</td>
+                                    <td>PythiaMatch - Admin Dashboard</td>
                                 </tr>
                                 <tr>
                                     <td className="fw-medium">Priority</td>

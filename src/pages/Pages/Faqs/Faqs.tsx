@@ -6,7 +6,7 @@ import classnames from "classnames";
 import faqImg from "../../../assets/images/faq-img.png";
 
 const Faqs = () => {
-  document.title="FAQs | Velzon - React Admin & Dashboard Template";
+  document.title="FAQs | PythiaMatch - AI for recruiters";
 
   const [col1, setcol1] = useState(true)
   const [col2, setcol2] = useState(false)

@@ -90,7 +90,7 @@ const UserProfile = () => {
     }
   });
 
-  document.title = "Profile | Velzon - React Admin & Dashboard Template";
+  document.title = "Profile | PythiaMatch - AI for recruiters";
   return (
     <React.Fragment>
       <div className="page-content">

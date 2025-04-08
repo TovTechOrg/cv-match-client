@@ -433,7 +433,7 @@ const CrmLeads = () => {
     [handleLeadClick, checkedAll]
   );
 
-  document.title = "Leads | Velzon - React Admin & Dashboard Template";
+  document.title = "Leads | PythiaMatch - AI for recruiters";
 
   return (
     <React.Fragment>

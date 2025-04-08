@@ -5,7 +5,7 @@ import BreadCrumb from "../../../Components/Common/BreadCrumb";
 
 const TermsCondition = () => {
   document.title =
-    "Terms & Condition | Velzon - React Admin & Dashboard Template";
+    "Terms & Condition | PythiaMatch - AI for recruiters";
   return (
     <React.Fragment>
       <div className="page-content">

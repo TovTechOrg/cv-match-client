@@ -4,7 +4,7 @@ import Section from './Section';
 
 
 const ProjectOverview = () => {
-  document.title="Project Overview | Velzon - React Admin & Dashboard Template";
+  document.title="Project Overview | PythiaMatch - AI for recruiters";
 
     return (
         <React.Fragment>

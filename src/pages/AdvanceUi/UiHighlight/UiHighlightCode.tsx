@@ -7,7 +7,7 @@ const htmlHighlightCode =
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Velzon - Responsive Admin Dashboard Template</title>
+        <title>PythiaMatch - AI for recruiters</title>
     </head>
     <body>
         <div>

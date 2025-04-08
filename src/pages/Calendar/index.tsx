@@ -316,7 +316,7 @@ const Calender = () => {
     }
   };
 
-  document.title = "Calendar | Velzon - React Admin & Dashboard Template";
+  document.title = "Calendar | PythiaMatch - AI for recruiters";
   return (
     <React.Fragment>
       <DeleteModal

@@ -324,7 +324,7 @@ const EcommerceProducts = (props: any) => {
   ],
     []
   );
-  document.title = "Products | Velzon - React Admin & Dashboard Template";
+  document.title = "Products | PythiaMatch - AI for recruiters";
 
   return (
     <div className="page-content">

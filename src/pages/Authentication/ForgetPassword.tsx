@@ -17,12 +17,13 @@ import { userForgetPassword } from "../../slices/thunks";
 
 // import images
 // import profile from "../../assets/images/bg.png";
-import logoLight from "../../assets/images/logo-light.png";
+// import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/logo-pythiamatch.png";
 import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
 import { createSelector } from "reselect";
 
 const ForgetPasswordPage = (props: any) => {
-  document.title = "Reset Password | Velzon - React Admin & Dashboard Template";
+  document.title = "Reset Password | PythiaMatch - AI for recruiters";
 
   const dispatch = useDispatch<any>();
 
@@ -63,10 +64,9 @@ const ForgetPasswordPage = (props: any) => {
               <div className="text-center mt-sm-5 mb-4 text-white-50">
                 <div>
                   <Link to="/" className="d-inline-block auth-logo">
-                    <img src={logoLight} alt="" height="20" />
+                    <img src={logoLight} alt="" height="140" />
                   </Link>
                 </div>
-                <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
               </div>
             </Col>
           </Row>
@@ -78,7 +78,7 @@ const ForgetPasswordPage = (props: any) => {
                 <CardBody className="p-4">
                   <div className="text-center mt-2">
                     <h5 className="text-primary">Forgot Password?</h5>
-                    <p className="text-muted">Reset password with velzon</p>
+                    <p className="text-muted">Reset password with PythiaMatch</p>
 
                     <i className="ri-mail-send-line display-5 text-success mb-3"></i>
 

@@ -9,7 +9,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const CoverPasswReset = () => {
-    document.title = "Reset Password | Velzon - React Admin & Dashboard Template";
+    document.title = "Reset Password | PythiaMatch - AI for recruiters";
 
     const validation = useFormik({
         enableReinitialize: true,
@@ -40,7 +40,7 @@ const CoverPasswReset = () => {
                                         <Col lg={6}>
                                             <div className="p-lg-5 p-4">
                                                 <h5 className="text-primary">Forgot Password?</h5>
-                                                <p className="text-muted">Reset password with velzon</p>
+                                                <p className="text-muted">Reset password with PythiaMatch</p>
 
                                                 <div className="mt-2 text-center">
                                                     <i className="ri-mail-send-line display-5 text-success"></i>
@@ -91,7 +91,7 @@ const CoverPasswReset = () => {
                         <Row>
                             <Col lg={12}>
                                 <div className="text-center">
-                                    <p className="mb-0">&copy; {new Date().getFullYear()} Velzon. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                    <p className="mb-0">&copy; {new Date().getFullYear()} PythiaMatch. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand</p>
                                 </div>
                             </Col>
                         </Row>

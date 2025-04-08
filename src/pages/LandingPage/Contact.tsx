@@ -41,11 +41,11 @@ const Contact = (props: Props) => {
             <div className="mt-3">
               <h4 style={{color:'white'}}>Email Address:</h4>
               {/* <p>info@pythia-match.com</p> */}
-              <p>talya@tovtech.org</p>
+              <p className="fs-3">talya@tovtech.org</p>
             </div>
             <div>
               <h4 style={{color:'white'}}>Phone Number:</h4>
-              <p>+972-58-4431931</p>
+              <p className="fs-3">+972-58-4431931</p>
             </div>
           </div>
         </Col>

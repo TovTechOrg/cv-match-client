@@ -75,7 +75,7 @@ interface ImgData {
 }
 
 const ToDoList = () => {
-    document.title = "To Do Lists | Velzon - React Admin & Dashboard Template";
+    document.title = "To Do Lists | PythiaMatch - AI for recruiters";
 
     const dispatch: any = useDispatch();
 

@@ -23,7 +23,7 @@ interface ImgData {
 }
 
 const CandidateGrid = () => {
-  document.title = "Candidates Grid View | Velzon -  Admin & Dashboard Template";
+  document.title = "Candidates Grid View | PythiaMatch - AI for recruiters";
 
   const dispatch: any = useDispatch();
 

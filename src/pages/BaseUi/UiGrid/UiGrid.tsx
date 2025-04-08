@@ -9,7 +9,7 @@ import BreadCrumb from '../../../Components/Common/BreadCrumb';
 import { VerticalStartExample, VerticalCenterExample, VerticalEndExample, AlignSelfExample, HorizontalAlignExample } from "./UiGridCode";
 
 const UiGrid = () => {
-    document.title = "Grid | Velzon - React Admin & Dashboard Template";
+    document.title = "Grid | PythiaMatch - AI for recruiters";
     return (
         <React.Fragment>
             <UiContent />

@@ -9,7 +9,7 @@ import {
 } from "./BoxplotCharts";
 
 const BoxplotCharts = () => {
-    document.title="Boxplot Charts | Velzon - React Admin & Dashboard Template";
+    document.title="Boxplot Charts | PythiaMatch - AI for recruiters";
     return (
         <React.Fragment>
             <div className="page-content">

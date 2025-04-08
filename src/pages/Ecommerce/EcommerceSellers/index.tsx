@@ -38,7 +38,7 @@ import SellerChats from "./SellerChats";
 import { createSelector } from "reselect";
 
 const EcommerceSellers = () => {
-  document.title = "Sellers | Velzon - React Admin & Dashboard Template";
+  document.title = "Sellers | PythiaMatch - AI for recruiters";
 
   const dispatch = useDispatch<any>();
   const [sellerList, setSellerList] = useState<any>([]);

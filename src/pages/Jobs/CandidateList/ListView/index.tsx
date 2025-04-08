@@ -12,7 +12,7 @@ import AddEditJobCandidateList from "Components/Common/AddEditJobCandidateList";
 
 
 const CandidateList = () => {
-  document.title = "Candidate List View | Velzon -  Admin & Dashboard Template";
+  document.title = "Candidate List View | PythiaMatch - AI for recruiters";
 
   const dispatch: any = useDispatch();
 

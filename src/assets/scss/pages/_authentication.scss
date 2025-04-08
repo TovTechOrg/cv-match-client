@@ -31,13 +31,13 @@
 }
 
 .auth-one-bg{
-    background-image: url("../../images/auth-one-bg.jpg");
+    // background-image: url("../../images/auth-one-bg.jpg");
     background-position: center;
     background-size: cover;
 
     .bg-overlay{
-        background: linear-gradient(to right, darken($primary, 6%), $primary);
-        opacity: 0.9;
+        // background: linear-gradient(to right, darken($primary, 6%), $primary);
+        // opacity: 0.9;
     }
 }
 
@@ -73,16 +73,21 @@
 
 .signin-other-title{
     position: relative;
-    &:after{
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        left: 0;
-        right: 0;
-        border-top: 1px dashed var(--#{$prefix}border-color);
-        top: 10px;
-    }
+    border: solid 1px black;
+    border-radius: 20px;
+    padding: 0;
+    width: 200px;
+    margin: 0 auto;
+    // &:after{
+    //     content: "";
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 1px;
+    //     left: 0;
+    //     right: 0;
+    //     border-top: 1px dashed var(--#{$prefix}border-color);
+    //     top: 10px;
+    // }
 
     .title{
         display: inline-block;

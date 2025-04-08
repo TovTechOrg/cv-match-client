@@ -22,7 +22,7 @@ function LandingPage() {
             <h2 className="text-center">
               Pythia<span className="text-primary">Match</span>
             </h2>
-            <h2>Ai for Headhunters</h2>
+            <h2>AI for Headhunters</h2>
           </div>
           <div className=" d-flex justify-content-center">
             <h3 className="text-center " style={{ width: "54%" }}>
@@ -51,13 +51,13 @@ function LandingPage() {
           </Container>
           <div className="d-flex gap-4 my-5 flex-column align-items-center ">
             <h2 className="text-center fs-1 w-50 ">
-              Ai
+              AI
               <span className="text-primary text-warp">
                 {" "}
                 for smarter Hiring!
               </span>
             </h2>
-            <p className="text-white text-center" style={{ width: "57%" }}>
+            <p className="text-white text-center fs-3" style={{ width: "57%" }}>
               Find the perfect candidate faster. Maximum value for your clients.
             </p>
           </div>
@@ -66,7 +66,7 @@ function LandingPage() {
             <Row className="g-4 justify-content-center">
               <Col md={4} sm={12} className="d-flex">
                 <Card
-                  className="p-4  shadow-lg border-0 flex-fill"
+                  className="p-4 fs-3 shadow-lg border-0 flex-fill"
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
                 >
                   <Card.Body>
@@ -87,7 +87,7 @@ function LandingPage() {
 
               <Col md={4} sm={12} className="d-flex">
   <Card
-    className="p-4 shadow-lg border-0 flex-fill"
+    className="p-4 fs-3 shadow-lg border-0 flex-fill"
     style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
   >
     <Card.Body>
@@ -110,7 +110,7 @@ function LandingPage() {
 
               <Col md={4} sm={12} className="d-flex">
                 <Card
-                  className="p-4  shadow-lg border-0 flex-fill"
+                  className="p-4 fs-3 shadow-lg border-0 flex-fill"
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
                 >
                   <Card.Body>

@@ -28,7 +28,7 @@ const TicketDetails = () => {
                                     </tr>
                                     <tr>
                                         <td className="fw-medium">Project</td>
-                                        <td>Velzon - Admin Dashboard</td>
+                                        <td>PythiaMatch - Admin Dashboard</td>
                                     </tr>
                                     <tr>
                                         <td className="fw-medium">Assigned To:</td>

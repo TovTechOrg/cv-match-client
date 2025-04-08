@@ -19,7 +19,7 @@ import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 import Pagination from "../../../../Components/Common/Pagination";
 
 const JobGrid = () => {
-  document.title = "Job Grid | Velzon -  Admin & Dashboard Template";
+  document.title = "Job Grid | PythiaMatch - AI for recruiters";
 
   const [jobGridData, setJobGridData] = useState<any>();
   const [currentPage, setCurrentPage] = useState(1);

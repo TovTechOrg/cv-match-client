@@ -21,7 +21,7 @@ const BasicPasswCreate = () => {
 
 
 
-    document.title = "Create New Password | Velzon - React Admin & Dashboard Template";
+    document.title = "Create New Password | PythiaMatch - AI for recruiters";
 
     // const [newPassword, setNewPassword] = useState('');
     const [passwordShow, setPasswordShow] = useState(false);

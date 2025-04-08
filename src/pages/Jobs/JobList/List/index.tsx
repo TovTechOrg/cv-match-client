@@ -9,7 +9,7 @@ import AppSummaryChart from "./AppSummary";
 import Pagination from "../../../../Components/Common/Pagination";
 
 const JobList = () => {
-  document.title = "Job Lists | Velzon -  Admin & Dashboard Template";
+  document.title = "Job Lists | PythiaMatch - AI for recruiters";
 
   const [jobListData, setJobListData] = useState<any>();
   const [currentPage, setCurrentPage] = useState(1);

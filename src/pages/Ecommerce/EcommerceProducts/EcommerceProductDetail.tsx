@@ -124,7 +124,7 @@ function EcommerceProductDetail() {
       setcustomActiveTab(tab);
     }
   };
-  document.title = "Product Details | Velzon - React Admin & Dashboard Template";
+  document.title = "Product Details | PythiaMatch - AI for recruiters";
   return (
     <div className="page-content">
       <Container fluid>

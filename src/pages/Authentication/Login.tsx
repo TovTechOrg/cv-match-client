@@ -14,7 +14,8 @@ import { Field, useFormik } from "formik";
 // actions
 import { loginUser, socialLogin, resetLoginFlag } from "../../slices/thunks";
 
-import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/logo-pythiamatch.png";
+import logoGoogleIcon from "../../assets/images/logo-google-icon.svg";
 import { createSelector } from 'reselect';
 //import images
 
@@ -89,7 +90,7 @@ const Login = (props: any) => {
         }
     }, [dispatch, errorMsg]);
 
-    document.title = "Basic SignIn | Velzon - React Admin & Dashboard Template";
+    document.title = "Basic SignIn | PythiaMatch - AI for recruiters";
     return (
         <React.Fragment>
             <ParticlesAuth>
@@ -100,10 +101,10 @@ const Login = (props: any) => {
                                 <div className="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <Link to="/" className="d-inline-block auth-logo">
-                                            <img src={logoLight} alt="" height="20" />
+                                            <img src={logoLight} alt="" height="140" />
                                         </Link>
                                     </div>
-                                    <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                                    {/* <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p> */}
                                 </div>
                             </Col>
                         </Row>
@@ -114,7 +115,7 @@ const Login = (props: any) => {
                                     <CardBody className="p-4">
                                         <div className="text-center mt-2">
                                             <h5 className="text-primary">Welcome Back !</h5>
-                                            <p className="text-muted">Sign in to continue to Velzon.</p>
+                                            <p className="text-muted">Sign in to continue to PythiaMatch.</p>
                                         </div>
                                         {error ? (<Alert color="danger"> {error} </Alert>) : null}
                                         <div className="p-2 mt-4">
@@ -193,9 +194,10 @@ const Login = (props: any) => {
 
                                                 <div className="mt-4 text-center">
                                                     <div className="signin-other-title">
-                                                        <h5 className="fs-13 mb-4 title">Sign In with</h5>
+                                                        <img className="me-1" src={logoGoogleIcon} alt="sign in with Google" height="20" />
+                                                        <h5 className="fs-13 my-2 p-0 title">Sign In with Google</h5>
                                                     </div>
-                                                    <div>
+                                                    {/* <div>
                                                         <Link
                                                             to="#"
                                                             className="btn btn-primary btn-icon me-1"
@@ -218,7 +220,7 @@ const Login = (props: any) => {
                                                         </Link>
                                                         <Button color="dark" className="btn-icon"><i className="ri-github-fill fs-16"></i></Button>{" "}
                                                         <Button color="info" className="btn-icon"><i className="ri-twitter-fill fs-16"></i></Button>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </Form>
                                         </div>

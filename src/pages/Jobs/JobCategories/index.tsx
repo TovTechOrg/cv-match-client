@@ -119,7 +119,7 @@ const JobCategories = () => {
     )
   }
 
-  document.title = "Job Categories | Velzon -  Admin & Dashboard Template";
+  document.title = "Job Categories | PythiaMatch - AI for recruiters";
 
   return (
     <React.Fragment>
