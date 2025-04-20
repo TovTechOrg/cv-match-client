@@ -247,11 +247,13 @@ import ApiKey from '../pages/APIKey/index'
 // import BlogGridView from "pages/Pages/Blogs/GridView";
 // import PageBlogOverview from "pages/Pages/Blogs/Overview";
 import MatchesPage from "pages/Profile/MatchesPage";
+import ProfilePage from "pages/Profile/ProfilePage";
 import LandingPage from "pages/LandingPage/LandingPage";
 
 
 const authProtectedRoutes = [
   { path: "/matches", component: <MatchesPage /> },
+  { path: "/profile", component: <ProfilePage /> },
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
   // { path: "/dashboard", component: <DashboardEcommerce /> },
