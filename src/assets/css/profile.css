@@ -1,0 +1,16 @@
+.profile-page body {
+    background-color: rgb(177, 212, 224)!important;
+}
+
+.profile-page .navbar {
+    background-color: #e3f2fd;
+
+}
+
+.profile-page .hide-new-job {
+    visibility: hidden;
+}
+
+.profile-page footer {
+    display: none;
+}

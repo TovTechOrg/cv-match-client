@@ -23,3 +23,96 @@
   .actions-container > button {
     margin-right: 10px;
   }
+
+
+  .job-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .side {
+    position: absolute;
+    z-index: 3;
+  }
+
+  .side-1 {
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  .side-2 {
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  .box-title {
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+  }
+
+  .box-title:hover {
+    scale: 2;
+  }
+
+  .box-title-1 {
+    /* translate: 20px 10px; */
+    left: 50px;
+    top: 20px;
+  }
+
+  .box-title-2 {
+    /* translate: -20px 10px; */
+    right: 50px;
+    top: 20px;
+  }
+
+  .box-circle {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+  }
+
+  .box-circle-1 {
+    left: -30px;
+    top: -30px;
+    opacity: 0;
+  }
+
+  .box-circle-2 {
+    right: -30px;
+    top: -30px;
+    opacity: 0;
+  }
+
+  div.side-1:hover > .box-circle {
+    opacity: 1;
+    background-color: chartreuse;
+    transition: all 0.3s ease-in-out;
+  }
+
+  div.side-2:hover > .box-circle {
+    opacity: 1;
+    background-color: chocolate;
+    transition: all 0.3s ease-in-out;
+  }
+
+
+  div.side:hover > .box-circle {
+    opacity: 1;
+    scale: 30;
+    transition: all 0.5s ease-in-out;
+  }
+
+  div.side:hover > .box-title {
+    scale: 1.5;
+    color: white;
+  }
