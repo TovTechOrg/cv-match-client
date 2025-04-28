@@ -170,14 +170,14 @@ const MatchesPage = () => {
           id: `id-${i}`,
           type: 'text',
           name: `input-user-score-${i}`,
-          value: candidateRow.user_score,
+          value: candidateRow.user_score || '',
         };
         setTextBoxesValue(prev => [...prev, inputUserScore]);
         const inputComments: IInput = {
           id: `id-${i}`,
           type: 'text',
           name: `input-comments-${i}`,
-          value: candidateRow.comments,
+          value: candidateRow.comments || '',
         };        
         setTextCommentsValue(prev => [...prev, inputComments]);
 
@@ -402,8 +402,8 @@ const MatchesPage = () => {
                       <td>{item2.candidate_name}</td>
                       <td>{item2.MMR}</td>
                       <td>{item2.score}</td> 
-                      <td><input type="text" name={`input-user-score-${idx1}-${idx2}`} id={item2.idx.toString()} value={textBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"text")}/></td>
-                      <td><input type="text" name={`input-comments-${idx1}-${idx2}`} id={item2.idx.toString()} value={commentsBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"comments")}/></td>
+                      <td><input type="text" name={`input-user-score-${idx1}-${idx2}`} id={`input-user-score-${idx1}-${idx2}`} value={textBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"text")}/></td>
+                      <td><input type="text" name={`input-comments-${idx1}-${idx2}`} id={`input-comments-${idx1}-${idx2}`} value={commentsBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"comments")}/></td>
                         <td className='actions-container'>
                           <ReportModal
                             initSVG={ showReportModalSVG() }

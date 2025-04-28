@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col, Card, CardBody, Spinner } from "react-bootstrap";
 import logoLight from "../../assets/images/logo-pythiamatch.png";
 import "../../assets/css/profile.css";
+import { Link } from "react-router-dom";
 
 
 interface IProfileData {
@@ -108,7 +109,7 @@ const ProfilePage = () => {
 
     //
     return (
-        <div className="porfile-page page-content">
+        <div className="profile-page page-content">
 
             <div className="mb-3">
             </div>
@@ -120,7 +121,7 @@ const ProfilePage = () => {
                                         
                                         <div className="d-flex flex-row justify-content-between navbar p-3 m-3">
                                             <div>
-                                                <Button>View Matches</Button>
+                                                <Link to={'/matches'}>View Matches</Link>
                                             </div>
                                             {authUser && <div title={authUser.user.email}>signed in as: {authUser.user.name}</div>}
                                         </div>
@@ -157,7 +158,7 @@ const ProfilePage = () => {
 
                                             { 
                                                 <Form.Group
-                                                        className={ `mb-3 ${(formik.values.jobId === 'None' || formik.values.jobId === '') ? '' : 'hide-new-job'} `} >
+                                                        className={ `mb-3 ${(formik.values.jobId === 'None' || formik.values.jobId === '') ? 'hide-new-job': ''} `} >
 
 
                                                     <Form.Label>Upload a new Job description</Form.Label>
