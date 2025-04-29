@@ -78,7 +78,7 @@ const ProfilePage = () => {
             jobDescriptionFile: null as File | null,
             cvFiles: null as File | null,
             jobId: '',
-            language: ''
+            language: 'English'
         },
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -158,7 +158,7 @@ const ProfilePage = () => {
 
                                             { 
                                                 <Form.Group
-                                                        className={ `mb-3 ${(formik.values.jobId === 'None' || formik.values.jobId === '') ? 'hide-new-job': ''} `} >
+                                                        className={ `mb-3 ${(formik.values.jobId === 'None' || formik.values.jobId === '') ? '': 'hide-new-job'} `} >
 
 
                                                     <Form.Label>Upload a new Job description</Form.Label>

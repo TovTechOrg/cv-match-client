@@ -51,6 +51,17 @@ interface IInput {
   value: string,
 }
 
+interface IAuthUser {
+  access_token: string,
+  login: string,
+  user: {
+      email: string,
+      id: string,
+      name: string,
+  }
+}
+
+
 
 
 const MatchesPage = () => {
@@ -124,7 +135,6 @@ const MatchesPage = () => {
   const [showSpinner, setShowSpinner] = useState(false);
   let scoreTimeoutPointer: NodeJS.Timeout;
   let commentTimeoutPointer: NodeJS.Timeout;
-
   let initCandidatePos = 0;
 
   //
@@ -189,8 +199,6 @@ const MatchesPage = () => {
 
     })
   };
-
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, id: string, idx: number, type: string) => {
 
@@ -295,7 +303,18 @@ const MatchesPage = () => {
 
   const deleteMatchConfirmHandler = async (id: string, idx1: number, idx2: number) => {
     setShowSpinner(true);
-    const response = await axios.post('http://localhost:5000/api/delete_match', { id });
+
+    //
+    const authUserString = sessionStorage.getItem('authUser');
+    const authUser = authUserString ? JSON.parse(authUserString) : null;
+
+    //
+    const response = await axios.post('http://localhost:5000/api/delete_match', { id }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authUser!.access_token}`
+      }
+    });
 
     let newContent = pageObject[idx1].content.filter((item, idx) => idx !== idx2);
     pageObject[idx1].content = newContent;
@@ -305,7 +324,19 @@ const MatchesPage = () => {
 
   const deleteJobConfirmHandler = async (id: string, idx1: number) => {
     setShowSpinner(true);
-    const response = await axios.delete('http://localhost:5000/api/delete_job', { data: { id }});
+
+    //
+    const authUserString = sessionStorage.getItem('authUser');
+    const authUser = authUserString ? JSON.parse(authUserString) : null;
+
+    //
+    const response = await axios.delete('http://localhost:5000/api/delete_job', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authUser!.access_token}`
+      },
+      data: { id }
+    });
 
     let newContent = pageObject.filter((item, idx) => idx !== idx1);
     setPageObject([...newContent]);
@@ -316,14 +347,18 @@ const MatchesPage = () => {
 
   // useEffects:
   useEffect(() => {
+    setShowSpinner(true);
+
     Promise.all([getMatches, getReports])
-    .then((values) => {
-      const matchesData = values[0] as any;
-      const reportsData = values[1] as any;
-      
-      setMatches(matchesData);
-      setReports(reportsData);
-    });
+      .then((values) => {
+        const matchesData = values[0] as any;
+        const reportsData = values[1] as any;
+        
+        setMatches(matchesData);
+        setReports(reportsData);
+      });
+
+      setShowSpinner(false);
   }, []);
   
   // Separate useEffect to handle buildPageObject
@@ -333,10 +368,6 @@ const MatchesPage = () => {
     }
   }, [matches, reports]);
   
-  function showDeleteMatchSVG(): React.ReactNode {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <React.Fragment>
       
@@ -346,42 +377,42 @@ const MatchesPage = () => {
 
       <div className="page-content">
         {/* <div>{textBoxesValues.length}</div> */}
-        <Container fluid>
-          <Row>
-            <h1>Matches Page</h1>
-          </Row>
+        <Container>
           {pageObject.map((item1, idx1) => (
             <Row key={idx1}>
-              <Table striped bordered hover>
+              <Table striped bordered hover className='bg-light-subtle rounded-2'>
                 <thead>
                   <tr>
                     <th colSpan={6}>
                       <h3>
                         {item1.title}
                       </h3>
-                      <div className='actions-container'>
-                        {createAtToString(item1.created_at as any)}
-                        <ReportModal 
-                          showModal={false} 
-                          bodyText={item1.job_desc} 
-                          initSVG={showReportModalSVG()} 
-                          isConfirm={false} title={"None"}
-                        />
-                      
-                      {/* <Button onClick={() => removeJob(idx1)}>delete job</Button> */}
+                        <div className='actions-container d-flex flex-row justify-content-start'>
+                          {createAtToString(item1.created_at as any)}
 
-                      <ConfirmModal 
-                            showModal={false} 
-                            initSVG={ deleteSVG() }
-                            title='Delete Job'
-                            bodyText={"Do you confirm to delete the current job ?"} 
-                            matchId={item1.id} 
-                            idx1={idx1}
-                            idx2={0}
-                            approveAnswerTitle='Yes, delete it'
-                            declineAnswerTitle='No, keep it'
-                            confirmHandler={deleteJobConfirmHandler}
+                          <div className='ms-2'>
+                            <ReportModal 
+                              showModal={false} 
+                              bodyText={item1.job_desc} 
+                              initSVG={showReportModalSVG()} 
+                              isConfirm={false} title={"None"}
                             />
+                          </div>
+
+                          <div className='ms-2'>
+                            <ConfirmModal 
+                                  showModal={false} 
+                                  initSVG={ deleteSVG() }
+                                  title='Delete Job'
+                                  bodyText={"Do you confirm to delete the current job ?"} 
+                                  matchId={item1.id} 
+                                  idx1={idx1}
+                                  idx2={0}
+                                  approveAnswerTitle='Yes, delete it'
+                                  declineAnswerTitle='No, keep it'
+                                  confirmHandler={deleteJobConfirmHandler}
+                                  />
+                          </div>
                         </div>
                     </th>
                   </tr>
@@ -398,12 +429,12 @@ const MatchesPage = () => {
                 <tbody>
                   {item1.content.map((item2, idx2) => (
                     <tr key={idx1-idx2}>
-                      <td>{item2.id}</td>
-                      <td>{item2.candidate_name}</td>
-                      <td>{item2.MMR}</td>
-                      <td>{item2.score}</td> 
-                      <td><input type="text" name={`input-user-score-${idx1}-${idx2}`} id={`input-user-score-${idx1}-${idx2}`} value={textBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"text")}/></td>
-                      <td><input type="text" name={`input-comments-${idx1}-${idx2}`} id={`input-comments-${idx1}-${idx2}`} value={commentsBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"comments")}/></td>
+                      <td className='align-middle'>{item2.id}</td>
+                      <td className='align-middle'>{item2.candidate_name}</td>
+                      <td className='align-middle'>{item2.MMR}</td>
+                      <td className='align-middle'>{item2.score}</td> 
+                      <td className='align-middle'><input type="text" name={`input-user-score-${idx1}-${idx2}`} id={`input-user-score-${idx1}-${idx2}`} value={textBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"text")}/></td>
+                      <td className='align-middle'><input type="text" name={`input-comments-${idx1}-${idx2}`} id={`input-comments-${idx1}-${idx2}`} value={commentsBoxesValues[item2.idx].value} onChange={(e) => handleChange(e,item2.id,item2.idx,"comments")}/></td>
                         <td className='actions-container'>
                           <ReportModal
                             initSVG={ showReportModalSVG() }
